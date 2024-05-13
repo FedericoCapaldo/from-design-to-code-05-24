@@ -5,5 +5,11 @@ class MoviesController < ApplicationController
     if params[:query].present?
       @movies = @movies.where("title ILIKE ?", "%#{params[:query]}%")
     end
+
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.text { render partial: "movies/list", locals: { movies: @movies }, formats: [:html] }
+    end
   end
 end
