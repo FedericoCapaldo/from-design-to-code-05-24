@@ -10,6 +10,11 @@ export default class extends Controller {
   }
 
   update() {
-    console.log("to do update")
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+    fetch(url)
+      .then(response => response.text())
+      .then(data => {
+        console.log(data)
+      })
   }
 }
