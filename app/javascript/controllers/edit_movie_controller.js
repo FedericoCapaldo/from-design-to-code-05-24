@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="edit-movie"
 export default class extends Controller {
-  static targets = ["infos", "form"]
+  static targets = ["infos", "form", "card"]
 
   connect() {
 
@@ -24,7 +24,7 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(data => {
-        console.log(data)
+        this.cardTarget.outerHTML = data
       })
   }
 }
